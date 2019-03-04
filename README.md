@@ -1,9 +1,17 @@
 # 本书配套视频及其他响应式系列配套视频如下：
+
+
+
 Java编程方法论-响应式编-RxJava 分享视频 已完结 
-bilibili：<https://www.bilibili.com/video/av34537840>
+
+bilibili：<https://www.bilibili.com/video/av34537840
+
 油管:<https://www.youtube.com/playlist?list=PL95Ey4rht798MMCusPzIW7VYD1xaKJVjc>
+
 Java编程方法论-响应式编-Reactor 分享视频 已完结
+
 B站：<https://www.bilibili.com/video/av35326911>
+
 油管：<https://www.youtube.com/playlist?list=PL95Ey4rht7980EH8yr7SLBvj9XSE1ggdy>
 
 
@@ -88,3 +96,4 @@ B站：<https://www.bilibili.com/video/av35326911>
 37 onBackpressureXXX()操作与Flowable.generate()解读：[https://www.bilibili.com/video/av34537840/?p=](http://link.zhihu.com/?target=https%3A//www.bilibili.com/video/av34537840/%3Fp%3D2)37
 
 38 关于Rxjava解读简短的结束语：[https://www.bilibili.com/video/av34537840/?p=](http://link.zhihu.com/?target=https%3A//www.bilibili.com/video/av34537840/%3Fp%3D2)38
+
