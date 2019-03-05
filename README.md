@@ -2,13 +2,13 @@
 
 
 
-Java编程方法论-响应式编-RxJava 分享视频 已完结 
+Java编程方法论-响应式篇-RxJava 分享视频 已完结 
 
 bilibili：<https://www.bilibili.com/video/av34537840
 
 油管:<https://www.youtube.com/playlist?list=PL95Ey4rht798MMCusPzIW7VYD1xaKJVjc>
 
-Java编程方法论-响应式编-Reactor 分享视频 已完结
+Java编程方法论-响应式篇-Reactor 分享视频 已完结
 
 B站：<https://www.bilibili.com/video/av35326911>
 
