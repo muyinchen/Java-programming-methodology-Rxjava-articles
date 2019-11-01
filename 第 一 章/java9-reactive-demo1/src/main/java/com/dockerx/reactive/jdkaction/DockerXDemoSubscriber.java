@@ -11,6 +11,7 @@ public class DockerXDemoSubscriber<T> implements Flow.Subscriber<T>{
     private String name;
     private Flow.Subscription subscription;
     final long bufferSize;
+    boolean done;
     long count;
 
     public String getName() {
@@ -38,9 +39,13 @@ public class DockerXDemoSubscriber<T> implements Flow.Subscriber<T>{
     }
 
     public void onNext(T item) {
+        if (done) {
+            System.out.println(name +" Completed " + item);
+            return;
+        }
         //if (--count <= 0) subscription.request(count = bufferSize - bufferSize / 2);
-        System.out.println(" ############# " + Thread.currentThread().getName()+"　name: "+name+"　item: "+item+ " ############# ");
-        System.out.println(name + " received: " + item);
+        System.out.println(" ############# " + Thread.currentThread().getName()+"　name: "+name+"　item: "+(item==null?"NNNNN":item)+ " ############# ");
+        System.out.println(name + " received: " + (item==null?"NNNNN":item));
         try {
             Thread.sleep(10);
         } catch (InterruptedException e) {
@@ -54,6 +59,7 @@ public class DockerXDemoSubscriber<T> implements Flow.Subscriber<T>{
     }
 
     public void onComplete() {
+        this.done=true;
         System.out.println("Completed");
     }
 }

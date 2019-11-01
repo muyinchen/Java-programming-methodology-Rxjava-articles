@@ -30,6 +30,12 @@ public class DockerXDemoApplication {
             demoSubscribe(publisher,  "Two");
             demoSubscribe(publisher,  "Three");
             IntStream.range(1, 5).forEach(publisher::submit);
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
         } finally {
             try {
                 execService.shutdown();

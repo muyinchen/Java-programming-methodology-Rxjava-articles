@@ -1,6 +1,14 @@
 package com.dockerx.reactive.jdkaction;
 
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.VarHandle;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
 import java.util.concurrent.*;
+import java.util.concurrent.locks.AbstractQueuedSynchronizer;
+import java.util.concurrent.locks.LockSupport;
 
 /**
  * @author Author  知秋
@@ -10,12 +18,30 @@ import java.util.concurrent.*;
 public class DockerXDemoPublisher<T> implements Flow.Publisher<T>, AutoCloseable {
     private final ExecutorService executor; // daemon-based
     private CopyOnWriteArrayList<DockerXDemoSubscription> list = new CopyOnWriteArrayList();
+    //private volatile int wip =0;
+    //private static final VarHandle WIP;
+    // static {
+    //    try {
+    //        MethodHandles.Lookup l = MethodHandles.lookup();
+    //        WIP = l.findVarHandle(DockerXDemoPublisher.class, "wip", int.class);
+    //    } catch (ReflectiveOperationException e) {
+    //        throw new Error(e);
+    //    }
+    //
+    //}
 
 
     public void submit(T item) {
         System.out.println("***************** 开始发布元素 item: "+item+" *****************");
+
         list.forEach(e -> {
-            e.future=executor.submit(() -> { e.subscriber.onNext(item);});
+            e.future=executor.submit(() -> {
+            e.subscriber.onNext(item);
+            e.cancel();
+            e.request(1);
+
+
+            });
 
         });
     }
