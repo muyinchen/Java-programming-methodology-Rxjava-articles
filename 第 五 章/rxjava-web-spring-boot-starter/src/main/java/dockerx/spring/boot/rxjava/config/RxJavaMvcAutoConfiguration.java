@@ -4,6 +4,7 @@ import dockerx.spring.boot.rxjava.valuehandler.ObservableReturnValueHandler;
 import dockerx.spring.boot.rxjava.valuehandler.SingleReturnValueHandler;
 import io.reactivex.Observable;
 import io.reactivex.Single;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.AsyncHandlerMethodReturnValueHandler;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
+import org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 
@@ -43,21 +45,17 @@ public class RxJavaMvcAutoConfiguration {
     }
 
     @Configuration
-    public static class RxJavaWebConfiguration {
+    public static class RxJavaWebConfiguration extends DelegatingWebMvcConfiguration {
 
         @RxMVC
         @Autowired
         private List<AsyncHandlerMethodReturnValueHandler> handlers = new ArrayList<>();
 
-        @Bean
-        public WebMvcConfigurationSupport rxJavaWebMvcConfiguration() {
-            return new WebMvcConfigurationSupport(){
-                @Override
-                protected void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> returnValueHandlers) {
-                    super.addReturnValueHandlers(returnValueHandlers);
-                    returnValueHandlers.addAll(handlers);
-                }
-            };
+        @Override
+        protected void addReturnValueHandlers(List<HandlerMethodReturnValueHandler> returnValueHandlers) {
+            super.addReturnValueHandlers(returnValueHandlers);
+            returnValueHandlers.addAll(handlers);
         }
+       
     }
 }
