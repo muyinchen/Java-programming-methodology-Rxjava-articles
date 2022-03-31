@@ -8,7 +8,7 @@
     <artifactId>java9-reactive-stock</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
-        <spring-boot.version>2.0.0.BUILD-SNAPSHOT</spring-boot.version>
+        <spring-boot.version>2.5.12</spring-boot.version>
         <java.version>1.9</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <start-class>com.dockerx.reactive.orderstock.OrderstockApp</start-class>
